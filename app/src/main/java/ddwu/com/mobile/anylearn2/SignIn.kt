@@ -5,15 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-class WithaiSelect : AppCompatActivity() {
+class SignIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_withai_select)
+        setContentView(R.layout.activity_sign_in)
 
-        val testButton : Button = findViewById(R.id.school)
+        val loginButton : Button = findViewById(R.id.btn_start)
 
-        testButton.setOnClickListener {
-            val intent = Intent(this, WithaiLevel::class.java)
+        loginButton.setOnClickListener {
+            val intent = Intent(this, FirstSetting::class.java)
             startActivity(intent)
         }
     }

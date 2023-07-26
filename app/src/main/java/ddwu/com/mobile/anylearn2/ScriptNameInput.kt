@@ -18,5 +18,10 @@ class ScriptNameInput : AppCompatActivity() {
             val intent = Intent(this, MyScriptList::class.java)
             startActivity(intent)
         }
+
+        sniBinding.nameInputHomeBtn.setOnClickListener{
+            val intent = Intent(this, MainPage::class.java)
+            startActivity(intent)
+        }
     }
 }

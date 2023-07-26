@@ -27,7 +27,7 @@ class MainPage : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         menuRecyclerView.setLayoutManager(layoutManager)
 
-        val menuAdapter = MainPageAdapter(menuItems)
+        val menuAdapter = MainPageAdapter(menuItems, this)
         menuRecyclerView.adapter = menuAdapter
 
         val settingButton: Button = findViewById(R.id.MainPageSetting)
@@ -35,14 +35,5 @@ class MainPage : AppCompatActivity() {
             val intent = Intent(this, SettingPage::class.java)
             startActivity(intent)
         }
-
-        menuAdapter.setOnItemClickListener(object : MainPageAdapter.OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                if (position == 0) {
-                    val intent = Intent(this@MainPage, WithaiSelect::class.java)
-                    startActivity(intent)
-                }
-            }
-        })
     }
 }

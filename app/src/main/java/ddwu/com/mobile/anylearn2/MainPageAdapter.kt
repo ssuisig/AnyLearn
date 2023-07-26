@@ -1,5 +1,7 @@
 package ddwu.com.mobile.anylearn2
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,7 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MainPageAdapter (private val menuItems: List<MenuItem>) : RecyclerView.Adapter<MainPageAdapter.MainPageViewHolder>() {
+class MainPageAdapter (private val menuItems: List<MenuItem>, private val context: Context)
+    : RecyclerView.Adapter<MainPageAdapter.MainPageViewHolder>() {
 
     class MainPageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
@@ -39,20 +42,27 @@ class MainPageAdapter (private val menuItems: List<MenuItem>) : RecyclerView.Ada
         holder.button2.text = currentItem.button2Text
         // Set onClickListener for button2 if needed
         // holder.button2.setOnClickListener { /* Your implementation here */ }
+
+        // 버튼 클릭 이벤트 처리 (필요에 따라 구현)
+        holder.button2.setOnClickListener {
+            when (currentItem.button2Text) {
+                "시작하기" -> {
+                    val intent = Intent(context, WithaiSelect::class.java)
+                    context.startActivity(intent)
+                }
+                "확인하기" -> {
+                    val intent = Intent(context, MyScriptList::class.java)
+                    context.startActivity(intent)
+                }
+                "목록" -> {
+                    val intent = Intent(context, MyDiaryMain::class.java)
+                    context.startActivity(intent)
+                }
+            }
+        }
     }
 
     override fun getItemCount() = menuItems.size
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
-
-    private var itemClickListener: OnItemClickListener? = null
-
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        this.itemClickListener = listener
-    }
 }
 
 data class MenuItem(

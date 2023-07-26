@@ -18,5 +18,10 @@ class ScriptSaveChoice : AppCompatActivity() {
             val intent = Intent(this, ScriptNameInput::class.java)
             startActivity(intent)
         }
+
+        sscBinding.noSaveBtn.setOnClickListener{
+            val intent = Intent(this, MainPage::class.java)
+            startActivity(intent)
+        }
     }
 }
